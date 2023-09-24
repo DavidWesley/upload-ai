@@ -1,5 +1,5 @@
 <div align="center" >
-  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#bb00ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg> 
+  <img src="../public/assets/upload-ia-logo.svg" />
   <h1 align="center">Upload.IA Web</h1>
 </div>
 
@@ -64,4 +64,5 @@ Este projeto foi desenvolvido utilizando tecnologias como:
     ```
 
 <h2 id="license">📝 Licença</h2>
+
 Este projeto está sob a licença [MIT](../LICENSE).
