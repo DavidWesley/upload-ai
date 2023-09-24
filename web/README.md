@@ -19,7 +19,6 @@
 
 Aplicação que possibilita realizar upload de videos e por meio de IA, criar automaticamente títulos chamativos e descrições com um boa indexação além de outros conteúdos que você solicitar.
 
-
 <div align="center" style="width: 100%;">
 	<img src="../public/assets/upload-ia-web-interface-view.gif" width="800px"/>
 </div>
@@ -41,27 +40,34 @@ Este projeto foi desenvolvido utilizando tecnologias como:
 
 1. Clone o projeto:
 
-    ```sh
-    git clone https://github.com/DavidWesley/upload-ia.git --branch main --single-branch
-    ```
+   ```sh
+   git clone https://github.com/DavidWesley/upload-ia.git --branch main --single-branch
+   ```
 
 2. Acesse a pasta do projeto:
 
-    ```sh
-    cd upload-ai/web
-    ```
+   ```sh
+   cd upload-ai/web
+   ```
 
 3. Instale as dependências:
 
-    ```sh
-    npm ci
-    ```
+   ```sh
+   npm ci
+   ```
 
-4. Inicie a aplicação:
+4. Defina as variáveis de ambiente conforme [`.env.example`](./.env.example):
 
-    ```sh
-    npm run dev
-    ```
+   ```sh
+   # Base url to connect to server
+   VITE_API_BASE_URL=
+   ```
+
+5. Inicie a aplicação:
+
+   ```sh
+   npm run dev
+   ```
 
 <h2 id="license">📝 Licença</h2>
 
