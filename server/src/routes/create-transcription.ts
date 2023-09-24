@@ -53,6 +53,11 @@ export async function createTranscriptionRoute(app: FastifyInstance) {
       response_format: "json",
       temperature: 0,
       prompt,
+    }, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+      },
     })
 
     const transcription = result.text
