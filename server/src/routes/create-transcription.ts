@@ -2,6 +2,7 @@ import { FastifyInstance } from "fastify"
 import fs from "node:fs"
 import path from "node:path"
 import stream from "node:stream"
+import url from "node:url"
 
 import { openai } from "@/lib/openai"
 import { prisma } from "@/lib/prisma"
@@ -38,11 +39,12 @@ export async function createTranscriptionRoute(app: FastifyInstance) {
     if (!audioBlob.data) {
       return res.status(StatusCodes.FAILED_DEPENDENCY).send({ error: "Uncovered error" })
     }
+
+    const __filename = url.fileURLToPath(import.meta.url)
+    const __dirname = path.dirname(__filename)
     const audioLocalPath = path.resolve(__dirname, "../../tmp/audios", `audio-${videoID}.mp3`)
 
-    await stream.Readable
-      .fromWeb(audioBlob.data.stream())
-      .pipe(fs.createWriteStream(audioLocalPath))
+    await stream.Readable.fromWeb(audioBlob.data.stream()).pipe(fs.createWriteStream(audioLocalPath))
 
     const result = await openai.audio.transcriptions.create({
       file: fs.createReadStream(audioLocalPath),
