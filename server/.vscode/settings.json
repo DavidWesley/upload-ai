@@ -1,0 +1,18 @@
+{
+  "cSpell.words": [
+    "fastify",
+    "openai",
+    "supabase",
+    "SUPABASE",
+    "tsup"
+  ],
+  "[prisma]": {
+    "editor.formatOnSave": true
+  },
+  "editor.formatOnSave": true,
+  "typescript.suggest.autoImports": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  }
+}

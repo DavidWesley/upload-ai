@@ -1,0 +1,38 @@
+// datasource db {
+//   provider     = "mysql"
+//   url          = env("DATABASE_URL")
+//   relationMode = "prisma"
+// }
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator erd {
+  provider                  = "prisma-erd-generator"
+  theme                     = "dark"
+  output                    = "./ERD.md"
+  ignoreEnums               = false
+  tableOnly                 = false
+  includeRelationFromFields = true
+}
+
+model Video {
+  id            String   @id @default(uuid())
+  name          String   @db.Text
+  path          String   @db.Text
+  transcription String?  @db.Text
+  createdAt     DateTime @default(now())
+}
+
+model Prompt {
+  id       String @id @default(uuid())
+  title    String @db.Text
+  template String @db.Text
+}

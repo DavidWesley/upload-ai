@@ -1,0 +1,59 @@
+{
+  "name": "upload-ia-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/server",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsup src --platform node --format esm --target es2021 --clean --keep-names --minify-syntax",
+    "start": "node dist/server",
+    "lint": "eslint",
+    "lint:fix": "eslint . --ext .js,.ts --fix",
+    "lint:all": "eslint src --ext .js,.ts --max-warnings=0 --fix"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
+  "keywords": [],
+  "author": {
+    "name": "David Wesley",
+    "email": "contato.dwesley@outlook.com",
+    "url": "https://github.com/DavidWesley/"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@tsconfig/strictest": "^2.0.2",
+    "@types/cron": "^2.4.0",
+    "@types/node": "^20.6.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
+    "eslint": "^8.49.0",
+    "pino-pretty": "^10.2.0",
+    "prisma": "^5.3.1",
+    "prisma-erd-generator": "^1.11.1",
+    "tsup": "^7.2.0",
+    "tsx": "^3.12.8",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@fastify/cors": "^8.3.0",
+    "@fastify/multipart": "^7.7.3",
+    "@fastify/rate-limit": "^8.0.3",
+    "@prisma/client": "^5.3.1",
+    "@supabase/supabase-js": "^2.33.2",
+    "ai": "^2.2.12",
+    "axios": "^1.5.0",
+    "dotenv": "^16.3.1",
+    "fastify": "^4.23.0",
+    "fastify-cron": "^1.3.1",
+    "http-status-codes": "^2.2.0",
+    "ia": "^0.0.1-beta",
+    "openai": "^4.6.0",
+    "zod": "^3.22.2"
+  }
+}
