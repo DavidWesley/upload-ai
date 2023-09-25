@@ -44,21 +44,28 @@ export async function createTranscriptionRoute(app: FastifyInstance) {
     const __dirname = path.dirname(__filename)
     const audioLocalPath = path.resolve(__dirname, "../../tmp/audios", `audio-${videoID}.mp3`)
 
-    await stream.Readable.fromWeb(audioBlob.data.stream()).pipe(fs.createWriteStream(audioLocalPath))
+    await stream.Readable.fromWeb(audioBlob.data.stream()).pipe(
+      fs.createWriteStream(audioLocalPath, {
+        flags: "w+",
+      })
+    )
 
-    const result = await openai.audio.transcriptions.create({
-      file: fs.createReadStream(audioLocalPath),
-      model: "whisper-1",
-      language: "pt",
-      response_format: "json",
-      temperature: 0,
-      prompt,
-    }, {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+    const result = await openai.audio.transcriptions.create(
+      {
+        file: fs.createReadStream(audioLocalPath, { flags: "r" }),
+        model: "whisper-1",
+        language: "pt",
+        response_format: "json",
+        temperature: 0,
+        prompt,
       },
-    })
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        },
+      }
+    )
 
     const transcription = result.text
     if (transcription) {
