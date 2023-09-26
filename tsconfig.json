@@ -1,0 +1,18 @@
+{
+  "files": [ ],
+  "include": [ ],
+  "extends": "./tsconfig.shared.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": [ "./*/src/" ]
+    }
+  },
+  "references": [
+    {
+      "path": "server/tsconfig.json"
+    },
+    {
+      "path": "web/tsconfig.json"
+    }
+  ]
+}
