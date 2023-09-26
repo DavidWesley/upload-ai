@@ -1,4 +1,4 @@
-import { ENV } from "@/lib/env"
+import { ENV } from "@/lib/env.ts"
 import { OpenAI } from "openai"
 
 export const openai = new OpenAI({

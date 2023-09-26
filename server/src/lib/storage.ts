@@ -1,4 +1,4 @@
-import { ENV } from "@/lib/env"
+import { ENV } from "@/lib/env.ts"
 import { createClient } from "@supabase/supabase-js"
 import { File } from "node:buffer"
 import path from "node:path"

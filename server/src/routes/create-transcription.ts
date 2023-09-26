@@ -1,10 +1,10 @@
 import { FastifyInstance } from "fastify"
 
-import { openai } from "@/lib/openai"
-import { prisma } from "@/lib/prisma"
-import { downloadFileStream } from "@/lib/storage"
-import { createTranscriptionBodySchema, createTranscriptionParamsSchema } from "@/schemas/zod"
-import { StatusCodes } from "@/utils/constants/http-status-code"
+import { openai } from "@/lib/openai.ts"
+import { prisma } from "@/lib/prisma.ts"
+import { downloadFileStream } from "@/lib/storage.ts"
+import { createTranscriptionBodySchema, createTranscriptionParamsSchema } from "@/schemas/zod.ts"
+import { StatusCodes } from "@/utils/constants/http-status-code.ts"
 import { toFile } from "openai"
 
 export async function createTranscriptionRoute(app: FastifyInstance) {
@@ -62,14 +62,14 @@ export async function createTranscriptionRoute(app: FastifyInstance) {
       return res.status(StatusCodes.EXPECTATION_FAILED).send({ error: "Não foi possível gerar uma transcrição" })
     }
 
-      await prisma.video.update({
-        where: {
-          id: videoID,
-        },
-        data: {
-          transcription,
-        },
-      })
+    await prisma.video.update({
+      where: {
+        id: videoID,
+      },
+      data: {
+        transcription,
+      },
+    })
 
     return res.status(StatusCodes.CREATED).send(transcription)
   })
