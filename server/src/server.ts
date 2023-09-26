@@ -2,13 +2,7 @@ import { fastifyCors } from "@fastify/cors"
 import { fastifyRateLimit } from "@fastify/rate-limit"
 import { fastify } from "fastify"
 
-import { ENV } from "@/lib/env"
-import { logger } from "@/lib/logging"
-import { createTranscriptionRoute } from "@/routes/create-transcription"
-import { generateAiCompletionRoute } from "@/routes/generate-ai-completion"
-import { getAllPromptsRoute } from "@/routes/get-all-prompts"
-import { uploadVideoRoute } from "@/routes/upload-video"
-import { TimeUnits } from "@/utils/constants/time-units"
+import { StatusCodes } from "@/utils/constants/http-status-code.ts"
 
 const app = fastify({
   logger: logger[ENV.NODE_ENV] ?? false,
@@ -29,6 +23,10 @@ app.register(fastifyRateLimit, {
   ban: 3,
   timeWindow: TimeUnits.CONSTANTS.second * 5, // 5 seconds
   continueExceeding: false,
+})
+
+app.get("/check", (_, res) => {
+  return res.status(StatusCodes.OK).send()
 })
 
 app.register(getAllPromptsRoute)
