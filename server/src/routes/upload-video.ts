@@ -35,7 +35,7 @@ export async function uploadVideoRoute(app: FastifyInstance) {
       "nlw-ia-audio-storage",
       data.mimetype,
       data.file,
-      generateSafeFilename(data.filename)
+      generateSafeFilename("audio", data.filename, 255)
     )
 
     if (fileUploadURL.error) {

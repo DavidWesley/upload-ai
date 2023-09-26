@@ -9,12 +9,24 @@ import path from "node:path"
 //   if (!fs.existsSync(destination)) fs.mkdirSync(destination)
 // }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function generateSafeFilename(filename: string): string {
+export function generateSafeFilename(filename: string, prefix?: string, maxLength: number = 255): string {
+  prefix = prefix || ""
   filename = path.normalize(filename.toLowerCase())
+  maxLength = Math.abs(maxLength)
+
+  const uuid = randomUUID()
   const extname = path.extname(filename)
-  const basename = path.basename(filename, extname)
-  return `${basename}-${randomUUID()}${extname}`
+
+  const fullName = [prefix, filename.substr(0, Math.min(maxLength - (prefix.length + uuid.length + extname.length), 0)), uuid]
+    .filter(Boolean)
+    .join("-")
+    .concat(extname)
+
+  if (maxLength < fullName.length) {
+    throw new Error(`Size can not be less than ${fullName.length}`)
+  }
+
+  return fullName
 }
 
 export function hasValidExtension(filename: string, exts: Array<`.${string}`>): boolean {
