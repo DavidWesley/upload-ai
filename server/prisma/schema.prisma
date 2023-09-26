@@ -25,7 +25,7 @@ generator erd {
 
 model Video {
   id            String   @id @default(uuid())
-  name          String   @db.Text
+  name          String   @db.VarChar(255)
   path          String   @db.Text
   transcription String?  @db.Text
   createdAt     DateTime @default(now())
