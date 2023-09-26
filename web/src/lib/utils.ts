@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function isRunningVite() {
-  const isViteContext = import.meta.env.VITE_CONTEXT ? true : false
+  const isViteContext = import.meta.env["VITE_CONTEXT"] ? true : false
   const hasSomeViteEnvVariables = Object.keys(import.meta.env).some(k => k.startsWith("VITE_"))
 
   return isViteContext || hasSomeViteEnvVariables
