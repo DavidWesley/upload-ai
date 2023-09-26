@@ -21,6 +21,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "exactOptionalPropertyTypes": false,
+    "strictNullChecks": false,
 
     /* Paths */
     "baseUrl": ".",
