@@ -79,8 +79,6 @@ export async function downloadFileStream(bucket: string, filepath: string) {
 
 // function getStoragePath(): string {
 //   const STORAGE_URL = ENV["STORAGE_URL"]
-//   // https://jeiuhlhyfxwfsghotyou.supabase.co/storage/v1/object/public/nlw-ia-audio-storage/public/output.mp3-f71f8a36-15c0-46c2-a0e3-9f410eaa542a.mp3
-
 //   if (STORAGE_URL) {
 //     return STORAGE_URL
 //   } else {
