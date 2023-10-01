@@ -1,9 +1,6 @@
 import { randomUUID } from "node:crypto"
 import path from "node:path"
 
-// import { pipeline } from "node:stream"
-// import { promisify } from "node:util"
-// const pump = promisify(pipeline)
 
 // function createDir(destination: PathLike): void {
 //   if (!fs.existsSync(destination)) fs.mkdirSync(destination)

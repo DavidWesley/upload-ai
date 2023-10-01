@@ -1,11 +1,11 @@
 import { OpenAIStream, streamToResponse } from "ai"
 import { FastifyInstance } from "fastify"
+import { StatusCodes } from "http-status-codes"
 
 import { openai } from "@/lib/openai.ts"
 import { prisma } from "@/lib/prisma.ts"
 
 import { generateAiCompletionPostBodySchema } from "@/schemas/zod.ts"
-import { StatusCodes } from "@/utils/constants/http-status-code.ts"
 
 export async function generateAiCompletionRoute(app: FastifyInstance) {
   app.post("/ai/complete", async (req, res) => {

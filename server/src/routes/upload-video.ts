@@ -1,9 +1,9 @@
 import { fastifyMultipart } from "@fastify/multipart"
 import { FastifyInstance } from "fastify"
+import { StatusCodes } from "http-status-codes"
 
 import { prisma } from "@/lib/prisma.ts"
 import { uploadPublicFile } from "@/lib/storage.ts"
-import { StatusCodes } from "@/utils/constants/http-status-code.ts"
 import { MEMORY_SIZE } from "@/utils/constants/memory-sizes.ts"
 import { generateSafeFilename, hasValidExtension } from "@/utils/file-handler.ts"
 

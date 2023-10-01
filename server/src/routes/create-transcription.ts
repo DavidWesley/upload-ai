@@ -1,11 +1,11 @@
 import { FastifyInstance } from "fastify"
+import { StatusCodes } from "http-status-codes"
+import { toFile } from "openai"
 
 import { openai } from "@/lib/openai.ts"
 import { prisma } from "@/lib/prisma.ts"
 import { downloadFileStream } from "@/lib/storage.ts"
 import { createTranscriptionBodySchema, createTranscriptionParamsSchema } from "@/schemas/zod.ts"
-import { StatusCodes } from "@/utils/constants/http-status-code.ts"
-import { toFile } from "openai"
 
 export async function createTranscriptionRoute(app: FastifyInstance) {
   app.post("/videos/:videoID/transcription", async (req, res) => {

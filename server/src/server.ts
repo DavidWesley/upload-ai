@@ -1,6 +1,7 @@
 import { fastifyCors } from "@fastify/cors"
 import { fastifyRateLimit } from "@fastify/rate-limit"
 import { fastify } from "fastify"
+import { StatusCodes } from "http-status-codes"
 
 import { ENV } from "@/lib/env.ts"
 import { logger } from "@/lib/logging.ts"
@@ -9,7 +10,6 @@ import { generateAiCompletionRoute } from "@/routes/generate-ai-completion.ts"
 import { getAllPromptsRoute } from "@/routes/get-all-prompts.ts"
 import { uploadVideoRoute } from "@/routes/upload-video.ts"
 import { TimeUnits } from "@/utils/constants/time-units.ts"
-import { StatusCodes } from "@/utils/constants/http-status-code.ts"
 
 const app = fastify({
   logger: logger[ENV.NODE_ENV] ?? false,
